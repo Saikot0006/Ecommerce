@@ -1,0 +1,1 @@
+final categoryList  = ['Smart Phone','Smart TV','HouseHold','Clothing'];

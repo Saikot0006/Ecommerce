@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "383083687076",
+    "project_id": "e-comarce-6805a",
+    "storage_bucket": "e-comarce-6805a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:383083687076:android:7fb2376fff75749a820a31",
+        "android_client_info": {
+          "package_name": "com.example.eomerence_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "383083687076-hql1tb4sc1ucpuiijbpq4qphge8vc7vn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.eomerence_app",
+            "certificate_hash": "6a10bcef68e3047adce53884816ddc64975d5540"
+          }
+        },
+        {
+          "client_id": "383083687076-6b3hnvjj29p0egmj4fje5kf80ta9olb7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2G0KgykyX2qk-US8fwZFN-7OkPavujBU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "383083687076-6b3hnvjj29p0egmj4fje5kf80ta9olb7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
