@@ -16,6 +16,8 @@ class DBHelper{
 
   static Stream<DocumentSnapshot> getAllProductById(String id) => _db.collection(COLLECTION_NAME).doc(id).snapshots();
 
+  static Future<void> deleteProduct(String id) => _db.collection(COLLECTION_NAME).doc(id).delete();
+
 
 
 

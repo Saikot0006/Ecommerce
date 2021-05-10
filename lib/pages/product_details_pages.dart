@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -32,7 +33,7 @@ class _ProductDetailsPagesState extends State<ProductDetailsPages> {
               final ProductModel productModel = ProductModel.fromMap(snapshot.data.data());
               return Column(
                 children: [
-                  Hero(tag: productModel.id,child: Image.file(File(productModel.localImage))),
+                  Hero(tag: productModel.id,child: Image.file(File(productModel.localImage),height: 400,width: double.maxFinite,)),
                 ],
               );
             }

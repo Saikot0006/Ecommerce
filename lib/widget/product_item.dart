@@ -1,6 +1,7 @@
 import 'dart:ffi';
 import 'dart:io';
 
+import 'package:eomerence_app/db/db_helper.dart';
 import 'package:eomerence_app/model/product_model.dart';
 import 'package:eomerence_app/pages/product_details_pages.dart';
 import 'package:flutter/material.dart';
@@ -29,10 +30,39 @@ class _ProductItemState extends State<ProductItem> {
                 fontSize: 16,
               ),),
               Text("BDT ${widget.productModel.price}"),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                      icon: Icon(Icons.shopping_cart),
+                      onPressed: () {}),
+                  IconButton(
+                      icon: Icon(Icons.delete_forever),
+                      onPressed: _deleteProduct)
+                ],
+              )
             ],
           ),
         ),
       ),
     );
+  }
+
+  void _deleteProduct() {
+
+    showDialog(barrierDismissible: false, context: context, builder: (context) => AlertDialog(
+      title: Text('Delete ${widget.productModel.name}?'),
+      content: Text('Are you sure to delete this item?'),
+      actions: [
+        TextButton(onPressed: (){
+          Navigator.pop(context);
+        }, child: Text('NO',style: TextStyle(color: Colors.grey),)),
+        ElevatedButton(onPressed: (){
+          DBHelper.deleteProduct(widget.productModel.id).then((value) => {
+            Navigator.pop(context),
+          });
+        }, child: Text('YES')),
+      ],
+    ));
   }
 }

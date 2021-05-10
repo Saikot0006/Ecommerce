@@ -16,6 +16,15 @@ class _ProductListPageState extends State<ProductListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Product List"),
+        actions: [
+          TextButton(onPressed: () => Navigator.pushNamed(context, NewProductPage.routeName),
+              child: Text("ADD",style: TextStyle(
+                color: Colors.white
+              ),))
+        ],
+      ),
       body: StreamBuilder(
         stream: DBHelper.getAllProduct(),
         builder: (context,snapshot){
@@ -26,7 +35,7 @@ class _ProductListPageState extends State<ProductListPage> {
             return GridView.count(
               crossAxisCount: 2,
               padding: const EdgeInsets.all(16.0),
-              childAspectRatio: 0.8,
+              childAspectRatio: 0.7,
               children: productList.map((product) => ProductItem(product)).toList(),
             );
           }
@@ -36,12 +45,7 @@ class _ProductListPageState extends State<ProductListPage> {
           return CircularProgressIndicator();
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          Navigator.pushNamed(context, NewProductPage.routeName);
-        },
-        child: Icon(Icons.add),
-      ),
+
     );
   }
 }
