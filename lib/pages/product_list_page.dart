@@ -2,8 +2,10 @@ import 'package:eomerence_app/auth/firebase_authentication.dart';
 import 'package:eomerence_app/db/db_helper.dart';
 import 'package:eomerence_app/model/product_model.dart';
 import 'package:eomerence_app/pages/new_product_page.dart';
+import 'package:eomerence_app/providers/cart_provider.dart';
 import 'package:eomerence_app/widget/product_item.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProductListPage extends StatefulWidget {
   static final String routeName = "/product_list";
@@ -22,7 +24,30 @@ class _ProductListPageState extends State<ProductListPage> {
           TextButton(onPressed: () => Navigator.pushNamed(context, NewProductPage.routeName),
               child: Text("ADD",style: TextStyle(
                 color: Colors.white
-              ),))
+              ),)),
+          Stack(
+            children: [
+              IconButton(icon: Icon(Icons.shopping_cart_sharp), onPressed: (){}),
+              Positioned(
+                right: 5,
+                child: Container(
+                  alignment: Alignment.center,
+                  width: 20,
+                  height: 20,
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    shape: BoxShape.circle
+                  ),
+                  child: Consumer<CartProvider>(
+                    builder: (context, cartProvider, _) => Text('${cartProvider.totalCartItems}',style: TextStyle(
+                      fontSize: 12,color: Colors.white,
+
+                    ),),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
       body: StreamBuilder(
@@ -42,7 +67,7 @@ class _ProductListPageState extends State<ProductListPage> {
           if(snapshot.hasError){
             return Text("Failed to fetch data");
           }
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator());
         },
       ),
 

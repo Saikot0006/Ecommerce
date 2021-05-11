@@ -4,7 +4,9 @@ import 'dart:io';
 import 'package:eomerence_app/db/db_helper.dart';
 import 'package:eomerence_app/model/product_model.dart';
 import 'package:eomerence_app/pages/product_details_pages.dart';
+import 'package:eomerence_app/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProductItem extends StatefulWidget {
   final ProductModel productModel;
@@ -33,9 +35,13 @@ class _ProductItemState extends State<ProductItem> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
-                      icon: Icon(Icons.shopping_cart),
-                      onPressed: () {}),
+                  Consumer<CartProvider>(
+                    builder:(context, cartProvider, _) => IconButton(
+                        icon: Icon(cartProvider.isInCart(widget.productModel.id) ? Icons.done : Icons.add_shopping_cart_outlined),
+                        onPressed: cartProvider.isInCart(widget.productModel.id) ? null : () {
+                          cartProvider.addToCart(widget.productModel);
+                        }),
+                  ),
                   IconButton(
                       icon: Icon(Icons.delete_forever),
                       onPressed: _deleteProduct)
