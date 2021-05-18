@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
 
               FirebaseAuthentication.loginUser(email, password).then((user) => {
                 if(user!=null){
-                  Navigator.pushNamed(context, ProductListPage.routeName),
+                  Navigator.pushReplacementNamed(context, ProductListPage.routeName),
                 }
               }).catchError((error){
                 errMsg = error.message;

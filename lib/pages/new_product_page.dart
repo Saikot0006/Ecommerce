@@ -193,6 +193,7 @@ class _NewProductPageState extends State<NewProductPage> {
       DBHelper.insertProduct(productModel).then((value) => {
         Navigator.pop(context),
       });
+      Navigator.pop(context);
 
 
     }
@@ -219,7 +220,6 @@ class _NewProductPageState extends State<NewProductPage> {
     setState(() {
       _imageLocalPath  = picked.path;
     });
-    print(picked.path);
     productModel.localImage = _imageLocalPath;
   }
 }

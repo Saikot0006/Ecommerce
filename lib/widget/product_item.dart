@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:io';
 
 import 'package:eomerence_app/db/db_helper.dart';
@@ -27,9 +26,12 @@ class _ProductItemState extends State<ProductItem> {
           elevation: 4,
           child: Column(
             children: [
-              Expanded(child: Hero(tag: widget.productModel.id,child: Image.file(File(widget.productModel.localImage),height: 150,width: double.maxFinite,fit: BoxFit.cover,))),
+              Expanded(child: Hero(
+                  tag: widget.productModel.id,
+                  child: Image.file(File(widget.productModel.localImage),height: 150,width: double.maxFinite,fit: BoxFit.cover,))),
               Text(widget.productModel.name,style: TextStyle(
-                fontSize: 16,
+                fontSize: 13,
+                fontWeight: FontWeight.bold,
               ),),
               Text("BDT ${widget.productModel.price}"),
               Row(

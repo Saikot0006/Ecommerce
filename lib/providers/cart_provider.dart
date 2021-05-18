@@ -13,6 +13,19 @@ class CartProvider extends ChangeNotifier{
 
   int get totalCartItems => cartList.length;
 
+  int get grandTotal{
+    var total = 0;
+    cartList.forEach((model) {
+      total += model.price * model.qty;
+    });
+    return total;
+  }
+
+  clearCart(){
+    cartList.clear();
+    notifyListeners();
+  }
+
   bool isInCart(String id){
     bool tag = false;
     for(var model in cartList){

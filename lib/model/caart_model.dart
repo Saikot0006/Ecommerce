@@ -3,13 +3,13 @@ class CartModel{
   String productName;
   num price;
   int qty;
-  num subTotal;
+
 
   CartModel(
-      {this.productId, this.productName, this.price, this.qty = 1, this.subTotal});
+      {this.productId, this.productName, this.price, this.qty = 1});
 
   @override
   String toString() {
-    return 'CartModel{productId: $productId, productName: $productName, price: $price, qty: $qty, subTotal: $subTotal}';
+    return 'CartModel{productId: $productId, productName: $productName, price: $price, qty: $qty }';
   }
 }

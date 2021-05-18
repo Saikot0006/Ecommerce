@@ -1,6 +1,7 @@
 import 'package:eomerence_app/auth/firebase_authentication.dart';
 import 'package:eomerence_app/db/db_helper.dart';
 import 'package:eomerence_app/model/product_model.dart';
+import 'package:eomerence_app/pages/cart_page.dart';
 import 'package:eomerence_app/pages/new_product_page.dart';
 import 'package:eomerence_app/providers/cart_provider.dart';
 import 'package:eomerence_app/widget/product_item.dart';
@@ -27,7 +28,8 @@ class _ProductListPageState extends State<ProductListPage> {
               ),)),
           Stack(
             children: [
-              IconButton(icon: Icon(Icons.shopping_cart_sharp), onPressed: (){}),
+              IconButton(icon: Icon(Icons.shopping_cart_sharp),
+                  onPressed: () => Navigator.pushNamed(context, CartPage.routeName)),
               Positioned(
                 right: 5,
                 child: Container(

@@ -1,3 +1,4 @@
+import 'package:eomerence_app/pages/cart_page.dart';
 import 'package:eomerence_app/pages/launcher_page.dart';
 import 'package:eomerence_app/pages/login_page.dart';
 import 'package:eomerence_app/pages/new_product_page.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
           ProductListPage.routeName : (context) => ProductListPage(),
           NewProductPage.routeName : (context) => NewProductPage(),
           ProductDetailsPages.routeName : (context) => ProductDetailsPages(),
+          CartPage.routeName : (context) => CartPage(),
 
 
         },
