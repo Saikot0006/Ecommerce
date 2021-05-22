@@ -26,6 +26,11 @@ class CartProvider extends ChangeNotifier{
     notifyListeners();
   }
 
+  removeSingleCart(CartModel cartModel){
+    cartList.remove(cartModel);
+    notifyListeners();
+  }
+
   bool isInCart(String id){
     bool tag = false;
     for(var model in cartList){
