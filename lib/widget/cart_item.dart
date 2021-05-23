@@ -30,7 +30,20 @@ class _CartItemState extends State<CartItem> {
       },
       child: ListTile(
         title: Text(widget.cartModel.productName),
-        subtitle: Text('Quantity: ${widget.cartModel.qty}'),
+        subtitle: Consumer<CartProvider>(
+          builder: (context,cartProvider,_) => Row(
+            children: [
+              Text('Quantity: ${widget.cartModel.qty}'),
+              IconButton(icon: Icon(Icons.remove), onPressed: (){
+                cartProvider.decreaseQuantity(widget.cartModel);
+              }),
+              IconButton(icon: Icon(Icons.add), onPressed: (){
+                cartProvider.increaseQuantity(widget.cartModel);
+              }),
+            ],
+          ),
+        ),
+
         trailing: Text('BDT ${widget.cartModel.price * widget.cartModel.qty}'),
       ),
     );
