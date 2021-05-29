@@ -1,4 +1,4 @@
-import 'package:eomerence_app/model/caart_model.dart';
+import 'package:eomerence_app/model/cart_model.dart';
 import 'package:eomerence_app/model/product_model.dart';
 import 'package:flutter/material.dart';
 
@@ -40,6 +40,22 @@ class CartProvider extends ChangeNotifier{
       }
     }
     return tag;
+  }
+
+  increaseQuantity(CartModel cartModel){
+    
+    var index = cartList.indexOf(cartModel);
+    cartList[index].qty++;
+    notifyListeners();
+  }
+
+  decreaseQuantity(CartModel cartModel){
+    var index = cartList.indexOf(cartModel);
+    if(cartList[index].qty > 1){
+      cartList[index].qty--;
+      notifyListeners();
+    }
+
   }
 
 }

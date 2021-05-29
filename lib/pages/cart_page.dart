@@ -1,3 +1,4 @@
+import 'package:eomerence_app/pages/checkout_page.dart';
 import 'package:eomerence_app/providers/cart_provider.dart';
 import 'package:eomerence_app/widget/cart_item.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,15 @@ class _CartPageState extends State<CartPage> {
                 Text('Grand Total : ${cartProvider.grandTotal}',style: TextStyle(
                   fontSize: 22,
                   color: Colors.white,
-                ),)
+                ),),
+                ElevatedButton(style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.blue.shade900),
+                  elevation: MaterialStateProperty.all(10),
+                ),
+                    onPressed: (){
+                  Navigator.pushNamed(context, CheckoutPage.routeName);
+
+                }, child: Text('Checkout')),
               ],
             ),
           )

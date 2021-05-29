@@ -1,4 +1,4 @@
-import 'package:eomerence_app/model/caart_model.dart';
+import 'package:eomerence_app/model/cart_model.dart';
 import 'package:eomerence_app/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
