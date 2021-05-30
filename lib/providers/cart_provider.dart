@@ -1,5 +1,6 @@
 import 'package:eomerence_app/model/cart_model.dart';
 import 'package:eomerence_app/model/product_model.dart';
+import 'package:eomerence_app/utils/product_utils.dart';
 import 'package:flutter/material.dart';
 
 class CartProvider extends ChangeNotifier{
@@ -30,6 +31,10 @@ class CartProvider extends ChangeNotifier{
     cartList.remove(cartModel);
     notifyListeners();
   }
+
+  int subTotal(num price,num  qty) => price * qty;
+
+  int get totalPayableAmount => (grandTotal + deliveryCharge) - discount;
 
   bool isInCart(String id){
     bool tag = false;

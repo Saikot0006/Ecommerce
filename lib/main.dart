@@ -3,6 +3,7 @@ import 'package:eomerence_app/pages/checkout_page.dart';
 import 'package:eomerence_app/pages/launcher_page.dart';
 import 'package:eomerence_app/pages/login_page.dart';
 import 'package:eomerence_app/pages/new_product_page.dart';
+import 'package:eomerence_app/pages/order_conferm_page.dart';
 import 'package:eomerence_app/pages/product_details_pages.dart';
 import 'package:eomerence_app/pages/product_list_page.dart';
 import 'package:eomerence_app/providers/cart_provider.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
           ProductDetailsPages.routeName : (context) => ProductDetailsPages(),
           CartPage.routeName : (context) => CartPage(),
           CheckoutPage.routeName : (context) => CheckoutPage(),
+          OrderConfirmPage.routeName : (context) => OrderConfirmPage(),
 
 
         },

@@ -1,5 +1,6 @@
 import 'package:eomerence_app/db/db_helper.dart';
 import 'package:eomerence_app/model/customer_model.dart';
+import 'package:eomerence_app/pages/order_conferm_page.dart';
 import 'package:eomerence_app/utils/product_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -236,11 +237,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
     if(_formKey.currentState.validate()){
       _formKey.currentState.save();
 
-      await DBHelper.insertNewCustomer(customerModel);
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-              content: Text('Customer Save'))
-      );
+      final customerId = await DBHelper.insertNewCustomer(customerModel);
+      customerModel.id  = customerId;
+      Navigator.pushNamed(context, OrderConfirmPage.routeName,arguments: [customerModel,paymentMethodGroupValue]);
     }
   }
 }

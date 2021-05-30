@@ -14,10 +14,11 @@ class DBHelper{
 
   }
 
-  static Future<void> insertNewCustomer(CustomerModel customerModel){
+  static Future<String> insertNewCustomer(CustomerModel customerModel) async {
     final doc = _db.collection(COLLECTION_CUSTOMER).doc();
     customerModel.id = doc.id;
-    return doc.set(customerModel.toMap());
+    await doc.set(customerModel.toMap());
+    return doc.id;
 
   }
 

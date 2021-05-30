@@ -1,6 +1,6 @@
 final categoryList  = ['Smart Phone','Smart TV','HouseHold','Clothing'];
-
 final deliveryCharge = 100;
+final discount = 50;
 
 class PaymentMethod{
   static final String card = 'Card Payment';
