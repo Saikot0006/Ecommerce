@@ -1,9 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eomerence_app/model/cart_model.dart';
 import 'package:eomerence_app/model/customer_model.dart';
+import 'package:eomerence_app/model/order_model.dart';
 import 'package:eomerence_app/model/product_model.dart';
 
 final String COLLECTION_NAME = "Products";
 final String COLLECTION_CUSTOMER = "Customers";
+final String COLLECTION_ORDERS = "Orders";
+final String COLLECTION_ORDER_DETAILS = "OrderDetails";
 class DBHelper{
   static FirebaseFirestore _db = FirebaseFirestore.instance;
 
@@ -19,6 +23,19 @@ class DBHelper{
     customerModel.id = doc.id;
     await doc.set(customerModel.toMap());
     return doc.id;
+
+  }
+
+  static Future<String> insertNewOrder(OrderModel orderModel) async {
+    final doc = _db.collection(COLLECTION_ORDERS).doc();
+    orderModel.orderID = doc.id;
+    await doc.set(orderModel.toMap());
+    return doc.id;
+
+  }
+
+  static  insertOrderDetails(String orderId,CartModel cartModel) async {
+    await _db.collection(COLLECTION_ORDERS).doc(orderId).collection(COLLECTION_ORDER_DETAILS).add(cartModel.toMap());
 
   }
 

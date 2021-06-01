@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eomerence_app/db/db_helper.dart';
 import 'package:eomerence_app/model/customer_model.dart';
+import 'package:eomerence_app/model/order_model.dart';
 import 'package:eomerence_app/providers/cart_provider.dart';
 import 'package:eomerence_app/utils/product_utils.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +16,7 @@ class OrderConfirmPage extends StatefulWidget {
 }
 
 class _OrderConfirmPageState extends State<OrderConfirmPage> {
-  CustomerModel customerModel;
+  CustomerModel customerModel = CustomerModel();
   String paymentMethod;
   CartProvider cartProvider = CartProvider();
   @override
@@ -68,7 +71,22 @@ class _OrderConfirmPageState extends State<OrderConfirmPage> {
     );
   }
 
-  void _confirmOrder() {
+  void _confirmOrder() async {
+    final orderModel = OrderModel(
+      timestamp: Timestamp.fromDate(DateTime.now().toUtc()),
+      customerID: customerModel.id,
+      deliveryCharge: deliveryCharge,
+      discount: discount,
+      grandTotal: cartProvider.grandTotal,
+      orderStatus: OrderStatus.pending,
+      paymentMethod: paymentMethod,
 
+    );
+
+    print(orderModel);
+    final orderID = await DBHelper.insertNewOrder(orderModel);
+    cartProvider.cartList.forEach((cartModel) {
+      DBHelper.insertOrderDetails(orderID, cartModel);
+    });
   }
 }
